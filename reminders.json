@@ -1,10 +1,381 @@
-{
-  "reminders": [
-    "Remember Allah often, for the remembrance of Allah brings peace to the heart.",
-    "A grateful heart is a blessed heart.",
-    "Do not lose hope in the mercy of Allah.",
-    "Patience is beautiful, and Allah is with those who are patient.",
-    "Smile — it’s a sunnah!"
-  ]
-}
-
+// MARK: - Reminders Part 1 (1-50)
+let defaultRemindersJSON_Part1 = """
+[
+  {
+    "id": "\(UUID())",
+    "category": "Faith",
+    "type": "Quran",
+    "title": "Gratitude",
+    "text": "If you are grateful, I will surely increase you in favor.",
+    "reference": "Surah Ibrahim 14:7"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Patience",
+    "type": "Quran",
+    "title": "Patience Rewarded",
+    "text": "Indeed, Allah is with the patient.",
+    "reference": "Surah Al-Baqarah 2:153"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Hope",
+    "type": "Quran",
+    "title": "Never Lose Hope",
+    "text": "Do not despair of the mercy of Allah. Indeed, Allah forgives all sins.",
+    "reference": "Surah Az-Zumar 39:53"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Character",
+    "type": "Hadith",
+    "title": "Good Manners",
+    "text": "The best among you are those who have the best manners and character.",
+    "reference": "Prophet Muhammad ﷺ (Bukhari)"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Charity",
+    "type": "Hadith",
+    "title": "Smile as Charity",
+    "text": "Your smile for your brother is a charity.",
+    "reference": "Tirmidhi"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Forgiveness",
+    "type": "Quran",
+    "title": "Forgive Others",
+    "text": "Let them pardon and forgive. Do you not love that Allah should forgive you?",
+    "reference": "Surah An-Nur 24:22"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Knowledge",
+    "type": "Hadith",
+    "title": "Seek Knowledge",
+    "text": "Seeking knowledge is an obligation upon every Muslim.",
+    "reference": "Ibn Majah"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Prayer",
+    "type": "Quran",
+    "title": "Connection with Allah",
+    "text": "Indeed, prayer prohibits immorality and wrongdoing.",
+    "reference": "Surah Al-Ankabut 29:45"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Charity",
+    "type": "Quran",
+    "title": "Give Generously",
+    "text": "Whatever you spend in the way of Allah, He will replace it.",
+    "reference": "Surah Saba 34:39"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Gratitude",
+    "type": "Hadith",
+    "title": "Thankfulness",
+    "text": "He who does not thank people, does not thank Allah.",
+    "reference": "Ahmad"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Faith",
+    "type": "Quran",
+    "title": "Reliance",
+    "text": "And whoever relies upon Allah, then He is sufficient for him.",
+    "reference": "Surah At-Talaq 65:3"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Kindness",
+    "type": "Hadith",
+    "title": "Kindness to All",
+    "text": "The merciful are shown mercy by the Most Merciful.",
+    "reference": "Tirmidhi"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Repentance",
+    "type": "Quran",
+    "title": "Turn Back to Allah",
+    "text": "And turn to Allah in repentance, all of you, O believers, that you might succeed.",
+    "reference": "Surah An-Nur 24:31"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Faith",
+    "type": "Quran",
+    "title": "Trust Allah’s Plan",
+    "text": "It may be that you dislike a thing and it is good for you.",
+    "reference": "Surah Al-Baqarah 2:216"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Humility",
+    "type": "Hadith",
+    "title": "Humility in Character",
+    "text": "Whoever humbles himself for Allah, Allah will elevate him.",
+    "reference": "Muslim"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Family",
+    "type": "Hadith",
+    "title": "Best to Family",
+    "text": "The best of you are those who are best to their families.",
+    "reference": "Tirmidhi"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Hope",
+    "type": "Quran",
+    "title": "Ease After Hardship",
+    "text": "For indeed, with hardship comes ease.",
+    "reference": "Surah Ash-Sharh 94:6"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Patience",
+    "type": "Hadith",
+    "title": "Patience is Light",
+    "text": "Patience is illumination.",
+    "reference": "Muslim"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Faith",
+    "type": "Quran",
+    "title": "Allah Knows Best",
+    "text": "And Allah knows, while you know not.",
+    "reference": "Surah Al-Baqarah 2:216"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Justice",
+    "type": "Quran",
+    "title": "Be Just",
+    "text": "Be just; that is nearer to righteousness.",
+    "reference": "Surah Al-Ma'idah 5:8"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Prayer",
+    "type": "Dua",
+    "title": "Morning Dua",
+    "text": "O Allah, I have reached the morning and with Your sustenance, Lord of power and might.",
+    "reference": null
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Protection",
+    "type": "Dua",
+    "title": "Before Sleep",
+    "text": "In Your name I die and I live. (Bismika Allahumma amutu wa ahya)",
+    "reference": null
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Gratitude",
+    "type": "Saying",
+    "title": "Thank Allah Often",
+    "text": "The most beloved deeds to Allah are those which are done consistently, even if small.",
+    "reference": "Prophet Muhammad ﷺ"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Kindness",
+    "type": "Hadith",
+    "title": "Help Others",
+    "text": "Whoever relieves a believer's distress of the distressful aspects of this world, Allah will rescue him from a difficulty of the Hereafter.",
+    "reference": "Muslim"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Faith",
+    "type": "Quran",
+    "title": "Allah is Sufficient",
+    "text": "Sufficient for us is Allah, and He is the best Disposer of affairs.",
+    "reference": "Surah Al-Imran 3:173"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Charity",
+    "type": "Hadith",
+    "title": "Charity Saves",
+    "text": "Charity extinguishes sins as water extinguishes fire.",
+    "reference": "Tirmidhi"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Hope",
+    "type": "Quran",
+    "title": "Allah’s Mercy",
+    "text": "My mercy encompasses all things.",
+    "reference": "Surah Al-A’raf 7:156"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Patience",
+    "type": "Hadith",
+    "title": "Reward for Patience",
+    "text": "No fatigue, nor disease, nor sorrow, nor sadness, nor hurt, nor distress befalls a Muslim, even if it were the prick he receives from a thorn, but that Allah expiates some of his sins for that.",
+    "reference": "Bukhari & Muslim"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Character",
+    "type": "Hadith",
+    "title": "Truthfulness",
+    "text": "Truthfulness leads to righteousness, and righteousness leads to Paradise.",
+    "reference": "Bukhari"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Faith",
+    "type": "Quran",
+    "title": "Remembrance of Allah",
+    "text": "Remember Me; I will remember you.",
+    "reference": "Surah Al-Baqarah 2:152"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Forgiveness",
+    "type": "Hadith",
+    "title": "Forgive Others",
+    "text": "He who pardons and makes reconciliation, his reward is with Allah.",
+    "reference": "Ahmad"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Dua",
+    "type": "Dua",
+    "title": "Protection from Evil",
+    "text": "O Allah, protect me from the evil of my soul and from every harmful creature.",
+    "reference": null
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Knowledge",
+    "type": "Hadith",
+    "title": "Share Knowledge",
+    "text": "Convey from me even if it is one verse.",
+    "reference": "Bukhari"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Faith",
+    "type": "Quran",
+    "title": "Reliance on Allah",
+    "text": "And whoever puts his trust in Allah, He will suffice him.",
+    "reference": "Surah At-Talaq 65:3"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Kindness",
+    "type": "Hadith",
+    "title": "Gentle Speech",
+    "text": "Kind words are a form of charity.",
+    "reference": "Bukhari & Muslim"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Prayer",
+    "type": "Dua",
+    "title": "Before Sleep",
+    "text": "O Allah, I have reached the night, and in Your protection I entrust myself.",
+    "reference": null
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Gratitude",
+    "type": "Saying",
+    "title": "Small Deeds",
+    "text": "Small deeds done consistently are better than great deeds done occasionally.",
+    "reference": "Prophet Muhammad ﷺ"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Faith",
+    "type": "Quran",
+    "title": "Allah’s Help",
+    "text": "Indeed, Allah is with those who fear Him and those who are doers of good.",
+    "reference": "Surah An-Nahl 16:128"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Patience",
+    "type": "Hadith",
+    "title": "Patience in Trials",
+    "text": "Amazing is the affair of the believer, verily all of his affairs are good.",
+    "reference": "Muslim"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Charity",
+    "type": "Hadith",
+    "title": "Feed the Hungry",
+    "text": "He who feeds a fasting person will have a reward like the one who fasts without diminishing the reward of the fasting person.",
+    "reference": "Tirmidhi"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Faith",
+    "type": "Quran",
+    "title": "Trust Allah",
+    "text": "Put your trust in Allah, and He is sufficient for you.",
+    "reference": "Surah Al-Ahzab 33:3"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Hope",
+    "type": "Quran",
+    "title": "Do Not Despair",
+    "text": "Do not despair of the mercy of Allah.",
+    "reference": "Surah Az-Zumar 39:53"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Character",
+    "type": "Hadith",
+    "title": "Control Anger",
+    "text": "The strong person is not the one who overcomes others by force, but the one who controls himself while in anger.",
+    "reference": "Bukhari & Muslim"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Faith",
+    "type": "Quran",
+    "title": "Remember Allah Often",
+    "text": "O you who believe, remember Allah with much remembrance.",
+    "reference": "Surah Al-Ahzab 33:41"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Dua",
+    "type": "Dua",
+    "title": "Morning Protection",
+    "text": "O Allah, in Your name I begin my morning.",
+    "reference": null
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Patience",
+    "type": "Hadith",
+    "title": "Suffering with Patience",
+    "text": "No fatigue, nor disease, nor sorrow, nor sadness, nor hurt, nor distress befalls a Muslim, but Allah expiates some of his sins for that.",
+    "reference": "Bukhari & Muslim"
+  },
+  {
+    "id": "\(UUID())",
+    "category": "Kindness",
+    "type": "Hadith",
+    "title": "Help Neighbor",
+    "text": "Jibril kept advising me to treat neighbors well until I thought he would assign them a share of inheritance.",
+    "reference": "Bukhari & Muslim"
+  }
+]
+"""
